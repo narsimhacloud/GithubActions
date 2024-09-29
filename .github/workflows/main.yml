@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  id-token: write   # Grant write permission for id-token
+  contents: read    # This is usually included for repository access
+
 jobs:
   create-container:
     runs-on: ubuntu-latest
@@ -15,22 +19,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Log in to Azure using the Azure login action
+      # Step 2: Log in to Azure using OIDC
       - name: Azure Login
         uses: azure/login@v1.4.6
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
 
       # Step 3: Create a container in Azure Storage Account
       - name: Create Azure Storage Container
         run: |
           # Set variables
-          RESOURCE_GROUP="gac"
-          STORAGE_ACCOUNT="gac"
-          CONTAINER_NAME="gac"
+          RESOURCE_GROUP="acr"
+          STORAGE_ACCOUNT="acr"
+          CONTAINER_NAME="acr"
 
           # Create the container
           az storage container create \
