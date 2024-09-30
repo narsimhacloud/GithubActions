@@ -31,7 +31,7 @@ jobs:
       - name: Create Azure Storage Container
         run: |
           RESOURCE_GROUP="wab-1"
-          STORAGE_ACCOUNT="gac"
+          STORAGE_ACCOUNT="gac1"
           CONTAINER_NAME="gac"
 
           az storage container create \
