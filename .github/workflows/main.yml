@@ -31,7 +31,7 @@ jobs:
       - name: Create Azure Container Registry (ACR)
         run: |
           RESOURCE_GROUP="wab-1"
-          REGISTRY_NAME="acr"  # Set your desired registry name
+          REGISTRY_NAME="acr_narsimha"  # Set your desired registry name
           LOCATION="eastus"  # Set the location for the ACR
 
           # Create the Azure Container Registry
