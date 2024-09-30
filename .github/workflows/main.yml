@@ -8,34 +8,33 @@ on:
 
 permissions:
   id-token: write   # Grant write permission for id-token
-  contents: read    # This is usually included for repository access
+  contents: read    # Access to repository contents
 
 jobs:
   create-container:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # Checkout the repository code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Log in to Azure using OIDC
-      - name: Azure Login
+      # Log in to Azure using OIDC
+      - name: Azure Login with OIDC
         uses: azure/login@v1.4.6
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      # Step 3: Create a container in Azure Storage Account
+      # Create a container in Azure Storage Account
       - name: Create Azure Storage Container
         run: |
-          # Set variables
           RESOURCE_GROUP="acr"
           STORAGE_ACCOUNT="acr"
           CONTAINER_NAME="acr"
 
-          # Create the container
+          # Create the storage container
           az storage container create \
             --name $CONTAINER_NAME \
             --account-name $STORAGE_ACCOUNT \
