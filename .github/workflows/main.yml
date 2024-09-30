@@ -30,7 +30,7 @@ jobs:
       # Step 3: Create the Azure Storage Container
       - name: Create Azure Storage Container
         run: |
-          RESOURCE_GROUP="gac"
+          RESOURCE_GROUP="wab-1"
           STORAGE_ACCOUNT="gac"
           CONTAINER_NAME="gac"
 
