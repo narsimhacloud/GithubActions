@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: success
+  workflow_dispatch: good job
 
 permissions:
   id-token: write   # Ensure write permission for id-token is enabled
