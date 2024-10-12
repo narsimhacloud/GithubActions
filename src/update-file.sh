@@ -38,7 +38,7 @@ update_repo() {
     git push origin update-file
 
     # Optionally, create a pull request (GitHub CLI must be installed)
-    gh pr create --title "Updated workflow file" --body "Automated update of the workflow file."
+    #gh pr create --title "Updated workflow file" --body "Automated update of the workflow file."
 
     # Go back to the original directory
     cd - || exit
