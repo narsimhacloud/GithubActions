@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: narsimhareddy
+  workflow_dispatch: narsimha
 
 permissions:
   id-token: write   # Ensure write permission for id-token is enabled
